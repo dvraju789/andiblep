@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+  - name: install webservers on ubuntu
+    apt:
+     name: apache2
+     state: present
+    when: ansible_os_family == "Debian"
+
+  - name: start webservers on ubuntu
+    service:
+     name: apache2
+     state: present
+    when: ansible_os_family == "Debian"  
