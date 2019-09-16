@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  become: yes
+  tasks:
+  - name: ansible node
+    -ec2:
+      key_name: awss
+      instance_type: t2.micro
+      image:  ami-05402c19682ad487f
+      wait: yes
+      region: us-east-2
+      group: sg1
+      count: 3
+      vpc_subnet_id: subnet-3dcb1d71
+      assign_public_ip: yes
+      instance_tags:
+         Name : ansiblenode
